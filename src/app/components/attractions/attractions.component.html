@@ -1,0 +1,19 @@
+<div>Data source: Miasto Stołeczne Warszawa</div>
+<div><a href="http://api.um.warszawa.pl" target="_blank">http://api.um.warszawa.pl</a></div>
+<input type="radio" name="radius" (change)="onChangeRadius(radius._500m)" checked>500m
+<input type="radio" name="radius" (change)="onChangeRadius(radius._1km)">1km
+<input type="radio" name="radius" (change)="onChangeRadius(radius._2km)">2km
+<google-map [options]="options" (mapClick)="onMapClick($event.latLng)">
+    <map-marker [position]="currentPosition" title="Curremt position" [icon]="blueIcon"></map-marker>
+    @for (marker of markers; track marker.id) {
+        <map-marker
+            #markerElem="mapMarker"
+            [position]="marker.position"
+            [title]="marker.title"
+            [icon]="greenIcon"
+            (mapClick)="onMarkerClick(markerElem, marker)"></map-marker>
+    }
+    <map-info-window #infoWindow>
+        <div>{{selectedMarker?.title}}</div>
+        <div>{{selectedMarker?.description}}</div></map-info-window>
+</google-map>

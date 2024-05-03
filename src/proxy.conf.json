@@ -1,0 +1,11 @@
+{
+	"/attractions": {
+		"target": "https://api.um.warszawa.pl",
+		"secure": true,
+		"changeOrigin": true,
+		"logLevel": "debug",
+        "pathRewrite": {
+            "^/attractions": "/api/action/tourism_attraction_get"
+          }
+	}
+}

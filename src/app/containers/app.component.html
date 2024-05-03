@@ -1,0 +1,11 @@
+@if (currentPosition | async; as currentPosition) {
+  @if (markers | async; as markers) {
+    <app-attractions
+      [currentPosition]="currentPosition"
+      [selectedMarker]="selectedMarker | async"
+      [markers]="markers"
+      (changeRadius)="changeRadius($event)"
+      (changeSelectedMarker)="changeSelectedMarker($event)"
+      (changeCurrentPosition)="changeCurrentPosition($event)"></app-attractions>
+  }
+}
